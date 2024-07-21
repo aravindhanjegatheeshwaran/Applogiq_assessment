@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from .models import ErrorChargeModel
 
-# Create your views here.
+def index(request):
+    print('comming')
+    errors = ErrorChargeModel.objects.all()
+    print('commint', errors)
+    return render(request, 'index.html', {'errors': errors})

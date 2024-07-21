@@ -1,3 +1,4 @@
-django==3.2.3
-django-extensions==3.2.3
-hl7apy==1.2.1
+django
+django-extensions
+hl7apy
+django-phone-field
