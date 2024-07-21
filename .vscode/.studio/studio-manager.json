@@ -3,7 +3,27 @@
     {
       "condition": "always",
       "commandType": "vscode",
-      "command": "studio-manager.openFile README.md 1"
+      "command": "studio-manager.openFile manage.py 1"
+    },
+    {
+      "condition": "always",
+      "commandType": "vscode",
+      "command": "studio-manager.openSimpleBrowser https://${STUDIO_HOST_ID}-8000.${STUDIO_HOST}",
+      "delay": 2000
+    },
+    {
+      "condition": "always",
+      "commandType": "vscode",
+      "command": "studio-manager.openTerminal",
+      "cmdArgs": [
+        "python manage.py runserver 0.0.0.0:8000",
+        {
+          "name": "django",
+          "location": 1
+        }
+      ],
+      "delay": 1000
     }
-  ]
+  ],
+  "simpleBrowserDefaultAppUrl": "https://${STUDIO_HOST_ID}-8000.${STUDIO_HOST}"
 }
