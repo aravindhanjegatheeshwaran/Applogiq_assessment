@@ -2,3 +2,6 @@ django
 django-extensions
 hl7apy
 django-phone-field
+jupyter
+notebook
+ipython
