@@ -5,6 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error Page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@4.20.1/dist/antd.min.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+        }
+        #error-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .ant-card {
+            width: 300px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+        .ant-card-body {
+            text-align: center;
+        }
+        h3 {
+            margin: 0;
+            color: #1890ff;
+        }
+        p {
+            margin: 5px 0 0;
+            color: #595959;
+        }
+    </style>
 </head>
 <body>
     <div id="error-cards">
@@ -17,7 +45,6 @@
             </div>
         {% endfor %}
     </div>
-    <div>name</div>
     <script src="https://cdn.jsdelivr.net/npm/antd@4.20.1/dist/antd.min.js"></script>
 </body>
 </html>
