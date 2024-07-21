@@ -12,18 +12,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-from django.conf import settings
-import django
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'Applogiq_assessment.settings'
-django.setup()
-
-# Optionally, verify Django is set up correctly
-
-print(settings.DATABASES)
 
 
 # Quick-start development settings - unsuitable for production

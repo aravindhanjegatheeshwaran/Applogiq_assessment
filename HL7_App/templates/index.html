@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error Cards</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/4.16.13/antd.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/antd/4.16.13/antd.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@4.20.1/dist/antd.min.css">
 </head>
 <body>
-    <div id="root"></div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const errorCharges = JSON.parse('{{ error_charges|safe }}');
-            const cards = errorCharges.map(error => (
-                `<div style="margin: 16px; width: 300px; border: 1px solid #f0f0f0; border-radius: 2px; padding: 16px;">
-                    <div style="font-weight: bold;">${error.error_type}</div>
-                    <p>Count: ${error.count}</p>
-                </div>`
-            )).join('');
-            document.getElementById('root').innerHTML = `<div style="display: flex; flex-wrap: wrap;">${cards}</div>`;
-        });
-    </script>
-    <header>
-        <h1>Show data</h1>
-    </header>
+    <div id="error-cards">
+        {% for error in errors %}
+            <div class="ant-card">
+                <div class="ant-card-body">
+                    <h3>{{ error.error_type }}</h3>
+                    <p>Count: {{ error.count }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/antd@4.20.1/dist/antd.min.js"></script>
 </body>
 </html>
