@@ -28,10 +28,10 @@ class Command(BaseCommand):
                         if not hl7_message or not hl7_message[0]:
                             continue
                         
-                        patient_info = self.extract_patient_info(hl7_message)
-                        errors = self.check_missing_fields(patient_info)
-                        self.store_patient_data(patient_info)
-                        self.store_error_charges(errors)
+                        patient_info = self.extractPatient(hl7_message)
+                        errors = self.missingFields(patient_info)
+                        self.storePatientData(patient_info)
+                        self.storeErrorCharge(errors)
                     except Exception as e:
                         print('Error', e)
                 except Exception as e:
@@ -41,7 +41,7 @@ class Command(BaseCommand):
         
         print('Successfully processed HL7 data from all files')
 
-    def extract_patient_info(self, hl7_message):
+    def extractPatient(self, hl7_message):
         patient_info = {}
         try:
             pid_segment = hl7_message[0]
@@ -66,7 +66,7 @@ class Command(BaseCommand):
             print(f'Invalid date format: {date_str}')
         return None
 
-    def check_missing_fields(self, patient_info):
+    def missingFields(self, patient_info):
         errors = []
         if not patient_info.get('dob'):
             errors.append('dob not found')
@@ -76,7 +76,7 @@ class Command(BaseCommand):
             errors.append('mrn not found')
         return errors
 
-    def store_patient_data(self, patient_info):
+    def storePatientData(self, patient_info):
         if patient_info:
             PatientModel.objects.create(
                 first_name=patient_info['first_name'],
@@ -87,7 +87,7 @@ class Command(BaseCommand):
                 phone=patient_info['phone']
             )
 
-    def store_error_charges(self, errors):
+    def storeErrorCharge(self, errors):
         for error in errors:
             ErrorChargeModel.objects.update_or_create(
                 error_type=error,
